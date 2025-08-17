@@ -22,8 +22,8 @@ export const ActionButtons = ({ onAction, scenario, isVisible = true }) => {
             style={actionStyles.actionButtonGradient}
           >
             <BlurView intensity={10} style={actionStyles.actionButtonBlur}>
-              <Text style={actionStyles.modernActionText}>זרוק scesddasdnarioיד</Text>
-              <Text style={actionStyles.modernActionDesc}>מוותר על הsיד</Text>
+              <Text style={actionStyles.modernActionText}>זרוק</Text>
+              <Text style={actionStyles.modernActionDesc}>מוותר על היד</Text>
             </BlurView>
           </LinearGradient>
         </TouchableOpacity>
@@ -110,7 +110,7 @@ export const ScenarioDisplay = ({ position, scenario }) => {
                 color: '#ffffff'
               }]}>
                 מצב ביד: {scenario.isRaised 
-                  ? `יש sdהעלאsddsל ${scenario.toCall}$` 
+                  ? `יש העלאה של ${scenario.toCall}$` 
                   : "אין פעולות לפניך"}
               </Text>
             </View>
