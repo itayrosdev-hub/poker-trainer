@@ -6,12 +6,74 @@ export const CARDS = {
 
 // פוזיציות נכונות בסדר הנכון (עם כיוון השעון מהכפתור)
 export const POSITIONS = [
-  { key: 'BTN', name: 'הכפתור', color: '#96CEB4', gradient: ['#96CEB4', '#85C1A1'], isDealer: true },
-  { key: 'SB', name: 'הבליינד הקטן', color: '#FFEAA7', gradient: ['#FFEAA7', '#FDCB6E'], isBlind: true, blindAmount: 0.5 },
-  { key: 'BB', name: 'הבליינד הגדול', color: '#DDA0DD', gradient: ['#DDA0DD', '#DA70D6'], isBlind: true, blindAmount: 1 },
-  { key: 'UTG', name: 'הראשון לפעול', color: '#FF6B6B', gradient: ['#FF6B6B', '#FF8E8E'], isEarlyPosition: true },
-  { key: 'MP', name: 'האמצע', color: '#4ECDC4', gradient: ['#4ECDC4', '#44A08D'], isMiddlePosition: true },
-  { key: 'CO', name: 'החותך', color: '#45B7D1', gradient: ['#45B7D1', '#4A90E2'], isLatePosition: true }
+  { 
+    key: 'BTN', 
+    name: 'הכפתור', 
+    shortName: 'BTN',
+    fullName: 'Button (הכפתור)',
+    description: 'המיקום החזק ביותר - פועל אחרון',
+    color: '#96CEB4', 
+    gradient: ['#96CEB4', '#85C1A1'], 
+    isDealer: true,
+    icon: '🎯'
+  },
+  { 
+    key: 'SB', 
+    name: 'הבליינד הקטן', 
+    shortName: 'SB',
+    fullName: 'Small Blind (בליינד קטן)',
+    description: 'משלם חצי יחידה חובה',
+    color: '#FFEAA7', 
+    gradient: ['#FFEAA7', '#FDCB6E'], 
+    isBlind: true, 
+    blindAmount: 0.5,
+    icon: '💰'
+  },
+  { 
+    key: 'BB', 
+    name: 'הבליינד הגדול', 
+    shortName: 'BB',
+    fullName: 'Big Blind (בליינד גדול)',
+    description: 'משלם יחידה שלמה חובה',
+    color: '#DDA0DD', 
+    gradient: ['#DDA0DD', '#DA70D6'], 
+    isBlind: true, 
+    blindAmount: 1,
+    icon: '💎'
+  },
+  { 
+    key: 'UTG', 
+    name: 'הראשון לפעול', 
+    shortName: 'UTG',
+    fullName: 'Under The Gun (תחת האקדח)',
+    description: 'פועל ראשון - מיקום חלש',
+    color: '#FF6B6B', 
+    gradient: ['#FF6B6B', '#FF8E8E'], 
+    isEarlyPosition: true,
+    icon: '🔫'
+  },
+  { 
+    key: 'MP', 
+    name: 'האמצע', 
+    shortName: 'MP',
+    fullName: 'Middle Position (מיקום אמצע)',
+    description: 'מיקום בינוני עם גמישות',
+    color: '#4ECDC4', 
+    gradient: ['#4ECDC4', '#44A08D'], 
+    isMiddlePosition: true,
+    icon: '⚖️'
+  },
+  { 
+    key: 'CO', 
+    name: 'החותך', 
+    shortName: 'CO',
+    fullName: 'Cut-Off (החותך)',
+    description: 'מיקום חזק לפני הכפתור',
+    color: '#45B7D1', 
+    gradient: ['#45B7D1', '#4A90E2'], 
+    isLatePosition: true,
+    icon: '✂️'
+  }
 ];
 
 // סדר פעולות Pre-Flop (הבליינדים כבר שילמו)

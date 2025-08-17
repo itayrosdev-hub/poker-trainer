@@ -16,9 +16,8 @@ import { BlurView } from "expo-blur";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // Import our components
-import { MinimalPokerTable } from "./src/components/MinimalPokerTable";
-import { MinimalCardsDisplay } from "./src/components/MinimalCards";
-import { MinimalActionButtons } from "./src/components/MinimalGameActions";
+import { ModernPokerTable } from "./src/components/ModernPokerTable";
+import { CardsDisplay } from "./src/components/Cards";
 import { ActionButtons, ScenarioDisplay } from "./src/components/GameActions";
 // Import AI components
 import { AICoachChat } from "./src/components/AIComponents";
@@ -754,10 +753,10 @@ export default function App() {
         {gameState.playerCards.length > 0 ? (
           <>
             {/* Modern Poker Table */}
-            <MinimalPokerTable gameState={gameState} />
+            <ModernPokerTable gameState={gameState} />
 
             {/* Cards */}
-            <MinimalCardsDisplay 
+            <CardsDisplay 
               cards={gameState.playerCards} 
                
             />
@@ -769,10 +768,9 @@ export default function App() {
             />
 
             {/* Action Buttons */}
-            <MinimalActionButtons 
+            <ActionButtons 
               onAction={makeDecision}
               scenario={gameState.scenario}
-              playerCards={gameState.playerCards}
               isVisible={!gameState.showAnswer}
             />
 

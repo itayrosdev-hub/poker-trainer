@@ -70,4 +70,59 @@ export const cardStyles = StyleSheet.create({
     alignSelf: "center",
     marginTop: 10,
   },
+
+  // 🎯 Hand Strength Header
+  handStrengthHeader: {
+    borderRadius: 15,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    marginBottom: 15,
+    borderWidth: 2,
+    borderColor: "rgba(255,255,255,0.3)",
+    minWidth: 200,
+    alignItems: "center",
+  },
+
+  handStrengthText: {
+    fontSize: 14,
+    fontWeight: "bold",
+    marginTop: 5,
+    textAlign: "center",
+    writingDirection: "rtl",
+  },
+
+  // 🔥 Premium Hand Glow Effects
+  premiumGlow: {
+    shadowColor: "#FFD700",
+    shadowOpacity: 1,
+    shadowRadius: 30,
+    elevation: 25,
+  },
+
+  strongGlow: {
+    shadowColor: "#26de81",
+    shadowOpacity: 0.8,
+    shadowRadius: 20,
+    elevation: 15,
+  },
+
+  // ✨ Premium Sparkles Effect
+  premiumSparkles: {
+    position: "absolute",
+    top: -20,
+    left: 0,
+    right: 0,
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+    height: 40,
+  },
+
+  sparkleText: {
+    fontSize: 20,
+    color: "#FFD700",
+    textShadowColor: "rgba(255,215,0,0.8)",
+    textShadowOffset: { width: 0, height: 0 },
+    textShadowRadius: 10,
+  },
 });

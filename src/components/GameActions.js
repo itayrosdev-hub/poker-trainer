@@ -31,13 +31,21 @@ const showTooltip = (action, scenario) => {
   Alert.alert(title, message, [{ text: "הבנתי", style: "default" }]);
 };
 
-export const ActionButtons = ({ onAction, scenario, isVisible = true }) => {
+export const ActionButtons = ({ onAction, scenario, playerCards, isVisible = true }) => {
   if (!isVisible) return null;
 
   return (
     <View style={actionStyles.modernActionsSection}>
+      {/* הודעה ניטרלית שלא חושפת כלום */}
+      <View style={actionStyles.handAdviceContainer}>
+        <Text style={actionStyles.handAdviceText}>
+          🤔 נתח את המצב והחלט בעצמך
+        </Text>
+      </View>
+      
       <Text style={actionStyles.modernActionPrompt}>How would you like to act?</Text>
       <View style={actionStyles.modernActionButtons}>
+        {/* כפתור FOLD - תמיד זמין */}
         <TouchableOpacity 
           style={actionStyles.modernActionButton}
           onPress={() => onAction("FOLD")}
@@ -50,11 +58,12 @@ export const ActionButtons = ({ onAction, scenario, isVisible = true }) => {
           >
             <BlurView intensity={10} style={actionStyles.actionButtonBlur}>
               <Text style={actionStyles.modernActionText}>FOLD</Text>
-              <Text style={[actionStyles.modernActionDesc, { fontSize: 10 }]}>לחץ ארוך להסבר</Text>
+              <Text style={actionStyles.modernActionSubtext}>זרוק</Text>
             </BlurView>
           </LinearGradient>
         </TouchableOpacity>
         
+        {/* כפתור CALL/CHECK - תמיד זמין */}
         <TouchableOpacity 
           style={actionStyles.modernActionButton}
           onPress={() => onAction("CALL")}
@@ -62,20 +71,21 @@ export const ActionButtons = ({ onAction, scenario, isVisible = true }) => {
           activeOpacity={0.8}
         >
           <LinearGradient
-            colors={["#feca57", "#ff9ff3"]}
+            colors={scenario?.isRaised ? ["#feca57", "#ff9ff3"] : ["#45B7D1", "#4A90E2"]}
             style={actionStyles.actionButtonGradient}
           >
             <BlurView intensity={10} style={actionStyles.actionButtonBlur}>
               <Text style={actionStyles.modernActionText}>
                 {scenario?.isRaised ? "CALL" : "CHECK"}
               </Text>
-              <Text style={[actionStyles.modernActionDesc, { fontSize: 10 }]}>
-                {scenario?.isRaised ? `$${scenario.toCall}` : "לחץ ארוך להסבר"}
+              <Text style={actionStyles.modernActionSubtext}>
+                {scenario?.isRaised ? `שווה $${scenario.toCall || 2}` : "בדוק"}
               </Text>
             </BlurView>
           </LinearGradient>
         </TouchableOpacity>
         
+        {/* כפתור RAISE - תמיד זמין */}
         <TouchableOpacity 
           style={actionStyles.modernActionButton}
           onPress={() => onAction("RAISE")}
@@ -88,7 +98,9 @@ export const ActionButtons = ({ onAction, scenario, isVisible = true }) => {
           >
             <BlurView intensity={10} style={actionStyles.actionButtonBlur}>
               <Text style={actionStyles.modernActionText}>RAISE</Text>
-              <Text style={[actionStyles.modernActionDesc, { fontSize: 10 }]}>לחץ ארוך להסבר</Text>
+              <Text style={actionStyles.modernActionSubtext}>
+                העלה ${scenario?.toCall ? scenario.toCall * 2 : 6}
+              </Text>
             </BlurView>
           </LinearGradient>
         </TouchableOpacity>

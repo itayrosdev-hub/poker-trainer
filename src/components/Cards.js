@@ -10,22 +10,23 @@ export const PokerCard = ({ card, index, cardFlipAnim }) => {
       style={[
         cardStyles.modernCard,
         { 
-          marginLeft: index > 0 ? -20 : 0,
+          marginLeft: index > 0 ? -25 : 0, // החפיפה הגדולה יותר נשארת
           zIndex: index,
           transform: [
-            { rotate: `${index * 3 - 1.5}deg` },
+            { rotate: `${index * 4 - 2}deg` }, // הסיבוב הגדול יותר נשאר
             { 
               rotateY: cardFlipAnim ? cardFlipAnim.interpolate({
                 inputRange: [0, 1],
                 outputRange: ["0deg", "180deg"]
               }) : "0deg"
-            }
+            },
+            { scale: 1.2 } // הקלפים הגדולים נשארים!
           ]
         }
       ]}
     >
       <LinearGradient
-        colors={["#ffffff", "#f8f9fa"]}
+        colors={["#ffffff", "#f8f9fa"]} // צבע קבוע לכל הקלפים
         style={cardStyles.cardGradient}
       >
         <BlurView intensity={5} style={cardStyles.cardBlur}>
@@ -33,20 +34,29 @@ export const PokerCard = ({ card, index, cardFlipAnim }) => {
             <View style={cardStyles.cardCorner}>
               <Text style={[
                 cardStyles.modernCardRank,
-                { color: ["♥", "♦"].includes(card.suit) ? "#dc3545" : "#212529" }
+                { 
+                  color: ["♥", "♦"].includes(card.suit) ? "#dc3545" : "#212529",
+                  fontSize: 20 // גודל קבוע לכל הקלפים
+                }
               ]}>
                 {card.rank}
               </Text>
               <Text style={[
                 cardStyles.modernCardSuit,
-                { color: ["♥", "♦"].includes(card.suit) ? "#dc3545" : "#212529" }
+                { 
+                  color: ["♥", "♦"].includes(card.suit) ? "#dc3545" : "#212529",
+                  fontSize: 16 // גודל קבוע לכל הקלפים
+                }
               ]}>
                 {card.suit}
               </Text>
             </View>
             <Text style={[
               cardStyles.cardCenterSuit,
-              { color: ["♥", "♦"].includes(card.suit) ? "#dc3545" : "#212529" }
+              { 
+                color: ["♥", "♦"].includes(card.suit) ? "#dc3545" : "#212529",
+                fontSize: 28 // גודל קבוע לכל הקלפים
+              }
             ]}>
               {card.suit}
             </Text>
@@ -62,7 +72,14 @@ export const CardsDisplay = ({ cards, cardFlipAnim, title = "הקלפים שלך
 
   return (
     <View style={cardStyles.modernCardsSection}>
-      <Text style={cardStyles.modernSectionTitle}>{title}</Text>
+      {/* כותרת נקייה ללא רמזים */}
+      <View style={cardStyles.handStrengthHeader}>
+        <Text style={cardStyles.modernSectionTitle}>
+          {title}
+        </Text>
+      </View>
+
+      {/* מכלול קלפים ללא הדגשות חושפניות */}
       <View style={cardStyles.modernCardsContainer}>
         {cards.map((card, index) => (
           <PokerCard 

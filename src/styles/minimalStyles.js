@@ -2,7 +2,7 @@ import { StyleSheet, Dimensions } from "react-native";
 
 const { width, height } = Dimensions.get("window");
 
-export const modernTableStyles = StyleSheet.create({
+export const minimalStyles = StyleSheet.create({
   // 🎯 שולחן פוקר מקצועי
   pokerTableContainer: {
     height: 320, // הגדלנו קצת לכל התוכן החדש

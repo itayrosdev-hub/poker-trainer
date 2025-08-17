@@ -23,28 +23,57 @@ export const generateRandomScenario = () => {
   // בחירת פוזיציה אקראית
   const playerPosition = POSITIONS[Math.floor(Math.random() * POSITIONS.length)];
   
-  // יצירת מצב משחק ריאליסטי
-  const scenario = {
-    pot: GAME_CONFIG.getInitialPot(), // התחלה עם בליינדים
-    raisedPot: 0,
-    toCall: GAME_CONFIG.bigBlind,
-    position: playerPosition.key,
-    playerStack: GAME_CONFIG.defaultStack,
-    isRaised: Math.random() > 0.6, // 40% מהמקרים יש העלאה
-    numCallers: Math.floor(Math.random() * 3), // 0-2 קוראים
-    actionBeforeUs: ['FOLD', 'CALL', 'RAISE'][Math.floor(Math.random() * 3)],
-    playersInHand: 6 - Math.floor(Math.random() * 3) // 4-6 שחקנים
+  // 🎯 מתמטיקת פוקר נכונה
+  const blinds = {
+    smallBlind: GAME_CONFIG.smallBlind,  // 0.5
+    bigBlind: GAME_CONFIG.bigBlind       // 1
   };
   
-  // התאמת הפוט לפי המצב
-  if (scenario.isRaised) {
-    scenario.raisedPot = scenario.toCall * 2;
-    scenario.pot += scenario.raisedPot;
-    scenario.toCall = scenario.raisedPot;
-  }
+  // התחלה עם בליינדים
+  let currentPot = blinds.smallBlind + blinds.bigBlind; // 1.5
   
-  // הוספת קוראים לפוט
-  scenario.pot += scenario.numCallers * scenario.toCall;
+  // בדיקה האם יש העלאות לפנינו
+  const hasRaise = Math.random() > 0.5; // 50% סיכוי
+  const numPlayersActed = Math.floor(Math.random() * 4) + 1; // 1-4 שחקנים פעלו
+  
+  let toCall = blinds.bigBlind; // ברירת מחדל
+  let actions = [];
+  
+  if (hasRaise) {
+    // גודל העלאה ריאלי (2-4 כפול הBB)
+    const raiseSize = blinds.bigBlind * (2 + Math.floor(Math.random() * 3)); // 2-4 BB
+    toCall = raiseSize;
+    currentPot += raiseSize;
+    actions.push('RAISE');
+    
+    // יתכן שיש קוראים נוספים
+    const numCallers = Math.floor(Math.random() * 2); // 0-1 קוראים
+    currentPot += numCallers * raiseSize;
+    for (let i = 0; i < numCallers; i++) {
+      actions.push('CALL');
+    }
+  } else {
+    // אין העלאות - יתכן שיש קוראים
+    const numCallers = Math.floor(Math.random() * 2); // 0-1 קוראים
+    currentPot += numCallers * blinds.bigBlind;
+    for (let i = 0; i < numCallers; i++) {
+      actions.push('CALL');
+    }
+  }
+
+  // יצירת מצב משחק ריאליסטי
+  const scenario = {
+    pot: Math.round(currentPot * 10) / 10, // עיגול לעשיריות
+    toCall: toCall,
+    position: playerPosition.key,
+    playerStack: GAME_CONFIG.defaultStack,
+    isRaised: hasRaise,
+    numCallers: actions.filter(a => a === 'CALL').length,
+    actionBeforeUs: hasRaise ? 'RAISE' : (actions.length > 0 ? 'CALL' : 'CHECK'),
+    playersInHand: 6 - Math.floor(Math.random() * 2), // 4-6 שחקנים
+    actions: actions, // היסטוריית פעולות
+    phase: 'pre-flop' // שלב המשחק
+  };
   
   return scenario;
 };

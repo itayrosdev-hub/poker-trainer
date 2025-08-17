@@ -62,6 +62,60 @@ export const actionStyles = StyleSheet.create({
     writingDirection: "rtl",
   },
 
+  // 🎯 Subtext for clean action buttons
+  modernActionSubtext: {
+    color: "rgba(255,255,255,0.8)",
+    fontSize: 10,
+    fontWeight: "500",
+    textAlign: "center",
+    writingDirection: "rtl",
+    marginTop: 2,
+  },
+
+  // 🎯 Hand Advice Styles
+  handAdviceContainer: {
+    backgroundColor: "rgba(0,0,0,0.6)",
+    borderRadius: 15,
+    paddingVertical: 10,
+    paddingHorizontal: 15,
+    marginBottom: 15,
+    borderWidth: 2,
+    borderColor: "rgba(255,215,0,0.3)",
+  },
+
+  handAdviceText: {
+    fontSize: 14,
+    fontWeight: "bold",
+    textAlign: "center",
+    writingDirection: "rtl",
+  },
+
+  // 🚫 Disabled Button Styles
+  disabledButton: {
+    opacity: 0.5,
+  },
+
+  disabledText: {
+    color: "rgba(255,255,255,0.5)",
+  },
+
+  // ⭐ Recommended Button Styles
+  recommendedButton: {
+    transform: [{ scale: 1.05 }],
+    shadowColor: "#FFD700",
+    shadowOpacity: 0.8,
+    shadowRadius: 15,
+    elevation: 15,
+  },
+
+  recommendedText: {
+    color: "#000",
+    fontWeight: "900",
+    textShadowColor: "rgba(255,215,0,0.5)",
+    textShadowOffset: { width: 0, height: 1 },
+    textShadowRadius: 2,
+  },
+
   // Scenario Display
   modernScenarioSection: {
     marginVertical: 20,
