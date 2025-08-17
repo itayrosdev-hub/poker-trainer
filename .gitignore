@@ -35,3 +35,9 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
+
+# Backup files
+App_backup*.js
+App_*_backup*.js
+temp_file.js
+backend/
