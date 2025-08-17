@@ -22,8 +22,8 @@ export const ActionButtons = ({ onAction, scenario, isVisible = true }) => {
             style={actionStyles.actionButtonGradient}
           >
             <BlurView intensity={10} style={actionStyles.actionButtonBlur}>
-              <Text style={actionStyles.modernActionText}>זרוק scenarioיד</Text>
-              <Text style={actionStyles.modernActionDesc}>מוותר על היד</Text>
+              <Text style={actionStyles.modernActionText}>זרוק scesddasdnarioיד</Text>
+              <Text style={actionStyles.modernActionDesc}>מוותר על הsיד</Text>
             </BlurView>
           </LinearGradient>
         </TouchableOpacity>
