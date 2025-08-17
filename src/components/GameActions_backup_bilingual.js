@@ -110,7 +110,7 @@ export const ScenarioDisplay = ({ position, scenario }) => {
                 color: '#ffffff'
               }]}>
                 מצב ביד: {scenario.isRaised 
-                  ? `יש העלאה של ${scenario.toCall}$` 
+                  ? `יש sdהעלאsddsל ${scenario.toCall}$` 
                   : "אין פעולות לפניך"}
               </Text>
             </View>
